@@ -37,7 +37,7 @@ func _ready():
 	else:
 		jumpBoxs.get_node("jumpBox3").set_translation(Vector3(
 			jumpBox3_Pos.x, 0, jumpBox3_Pos.y))
-	
+
 
 func _on_Area0_body_enter( body ):
 	if body.get_name() == bodyName:
