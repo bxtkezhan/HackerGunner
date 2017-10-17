@@ -21,14 +21,16 @@ func calcAngle(vect):
 	return (2 * (x > 0) - 1) * angle
 
 func _fixed_process(delta):
-	var vect = destination - get_translation()
+	var translation = get_translation()
 	if destination != destinationHist:
 		character.set_rotation(
 			Vector3(0, calcAngle(destination), 0))
 		destinationHist = destination
 		print(destinationHist)
-	if vect.length() > 0.3:
-		set_linear_velocity(vect.normalized() * moveSpeed * delta)
+	if translation.distance_to(destination) > 0.5:
+		set_linear_velocity(
+			(destination - translation).normalized() *
+			 moveSpeed * delta)
 		if not animationPlayer.is_playing():
 			animationPlayer.play("Arun")
 	elif get_linear_velocity().length() > 0:
