@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://multiTest/Test_CharacterBody_Bug.gd" type="Script" id=1]
+[ext_resource path="res://sceneBase/sceneBox.scn" type="PackedScene" id=2]
+[ext_resource path="res://character/characterBody.tscn" type="PackedScene" id=3]
+[ext_resource path="res://bug/bugBody.tscn" type="PackedScene" id=4]
+
+[node name="Test_CharacterBody_Bug" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="sceneBox" parent="." instance=ExtResource( 2 )]
+
+boxShape = Vector2( 10, 10 )
+jumpBox0 = Vector3( 0, 0, 0 )
+jumpBox1 = Vector3( 0, 0, 0 )
+jumpBox2 = Vector3( 0, 0, 0 )
+jumpBox3 = Vector3( 0, 0, 0 )
+
+[node name="characterBody" parent="." instance=ExtResource( 3 )]
+
+[node name="bugBody" parent="." instance=ExtResource( 4 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
+scale = 2
+
+

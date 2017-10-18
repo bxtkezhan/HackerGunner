@@ -13,10 +13,15 @@ export var jumpBox3_Pos = Vector2(-6.5, 0)
 
 onready var sceneBox = get_node("sceneBox")
 onready var jumpBoxs = get_node("jumpBoxContainer")
+onready var stickersPlane = get_node("stickersPlane")
+
+var userClick = null
 
 func _ready():
 	sceneBox.set_scale(
 	Vector3(boxShape.x, 1, boxShape.y))
+	stickersPlane.set_scale(
+	Vector3(boxShape.x / 8, 1, boxShape.y / 8))
 	if jumpBox0 == null:
 		jumpBoxs.get_node("jumpBox0").queue_free()
 	else:
@@ -42,15 +47,25 @@ func _ready():
 func _on_Area0_body_enter( body ):
 	if body.get_name() == bodyName:
 		body.set_translation(jumpBox0)
+		userClick = jumpBox3
 
 func _on_Area1_body_enter( body ):
 	if body.get_name() == bodyName:
 		body.set_translation(jumpBox1)
+		userClick = jumpBox3
 
 func _on_Area2_body_enter( body ):
 	if body.get_name() == bodyName:
 		body.set_translation(jumpBox2)
+		userClick = jumpBox3
 
 func _on_Area3_body_enter( body ):
 	if body.get_name() == bodyName:
 		body.set_translation(jumpBox3)
+		userClick = jumpBox3
+
+func _on_stickersPlaneBody_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	if ((event.type == InputEvent.MOUSE_BUTTON or
+		 event.type == InputEvent.SCREEN_TOUCH)
+		and event.is_pressed()):
+		userClick = click_pos

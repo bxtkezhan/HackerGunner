@@ -1,15 +1,22 @@
 extends RigidBody
 
-export var destination = Vector3(0, 0, 0)
+export var scale = 1
 export var moveSpeed = 300
 export var animationSpeed = 1.5
 
 onready var character = get_node("character")
 onready var animationPlayer = character.get_node("AnimationPlayer")
 
-var destinationHist = destination
+var destination = null
+var destinationHist = null
 
 func _ready():
+	for node in get_children():
+		node.set_scale(Vector3(1, 1, 1) * scale)
+		if node.get_name() == "CollisionShape":
+			node.set_translation(node.get_translation() * scale)
+	destination = get_translation()
+	destinationHist = destinationHist
 	animationPlayer.set_speed(animationSpeed)
 	set_fixed_process(true)
 	
@@ -26,7 +33,6 @@ func _fixed_process(delta):
 		character.set_rotation(
 			Vector3(0, calcAngle(destination), 0))
 		destinationHist = destination
-		print(destinationHist)
 	if translation.distance_to(destination) > 0.5:
 		set_linear_velocity(
 			(destination - translation).normalized() *

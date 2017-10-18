@@ -111,19 +111,4 @@ phase_2/color = Color( 0.324219, 0.324219, 0.324219, 1 )
 phase_3/pos = 1.0
 phase_3/color = Color( 0, 0, 0, 1 )
 
-[node name="debugCamera" type="Camera" parent="."]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 0.982722, 0.185086, 0, -0.185086, 0.982722, 0, 3.12803, 6.78882 )
-projection = 0
-fov = 65.0
-near = 0.1
-far = 100.0
-keep_aspect = 1
-current = false
-visible_layers = 1048575
-environment = null
-h_offset = 0.0
-v_offset = 0.0
-
 
