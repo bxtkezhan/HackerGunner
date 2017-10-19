@@ -65,7 +65,8 @@ func _on_Area3_body_enter( body ):
 		userClick = jumpBox3
 
 func _on_stickersPlaneBody_input_event( camera, event, click_pos, click_normal, shape_idx ):
-	if ((event.type == InputEvent.MOUSE_BUTTON or
-		 event.type == InputEvent.SCREEN_TOUCH)
-		and event.is_pressed()):
+	if event.type == InputEvent.MOUSE_BUTTON:
+		if event.button_index == BUTTON_RIGHT and event.is_pressed():
+			userClick = click_pos
+	elif event.type == InputEvent.SCREEN_TOUCH and event.is_pressed():
 		userClick = click_pos

@@ -24,14 +24,13 @@ func _fixed_process(delta):
 	set_translation(characterBody.get_translation())
 	set_rotation(character.get_rotation())
 
-func shooting(delay=0.3):
+func shoot(delay=0.3):
 	show()
 	collisionShape.set_rotation(Vector3(0, 0, 0))
 	timer.set_wait_time(delay)
 	timer.start()
 
 func _on_shoot_body_enter( body ):
-	print(body)
 	body.blueNum -= damageNum
 
 func _on_Timer_timeout():

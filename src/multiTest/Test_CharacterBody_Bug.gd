@@ -14,5 +14,6 @@ func _process(delta):
 			sceneBox.userClick * Vector3(1, 0, 1)
 
 func _input(event):
-	if event.is_action_pressed("ui_up"):
-		shoot.shooting()
+	if event.type == InputEvent.MOUSE_BUTTON:
+		if event.button_index == BUTTON_LEFT and event.is_pressed():
+			shoot.shoot()
