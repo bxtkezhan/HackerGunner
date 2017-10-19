@@ -3,6 +3,7 @@ extends RigidBody
 export var scale = 1
 export var moveSpeed = 300
 export var animationSpeed = 1.5
+export var blueNum = 100
 
 onready var character = get_node("character")
 onready var animationPlayer = character.get_node("AnimationPlayer")

@@ -47,17 +47,17 @@ func _ready():
 func _on_Area0_body_enter( body ):
 	if body.get_name() == bodyName:
 		body.set_translation(jumpBox0)
-		userClick = jumpBox3
+		userClick = jumpBox0
 
 func _on_Area1_body_enter( body ):
 	if body.get_name() == bodyName:
 		body.set_translation(jumpBox1)
-		userClick = jumpBox3
+		userClick = jumpBox1
 
 func _on_Area2_body_enter( body ):
 	if body.get_name() == bodyName:
 		body.set_translation(jumpBox2)
-		userClick = jumpBox3
+		userClick = jumpBox2
 
 func _on_Area3_body_enter( body ):
 	if body.get_name() == bodyName:

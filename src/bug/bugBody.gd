@@ -4,6 +4,7 @@ export var scale = 1
 export var moveSpeed = 100
 export var animationSpeed = 1
 export var targetName = "characterBody"
+export var blueNum = 100
 
 onready var bug = get_node("bug")
 onready var animationPlayer = bug.get_node("AnimationPlayer")
@@ -47,6 +48,10 @@ func _fixed_process(delta):
 	
 	if targetBody != null:
 		destination = targetBody.get_translation()
+		
+	# Blue Numer = 0 => Out
+	if blueNum <= 0:
+		queue_free()
 
 func _on_scanTarget_body_enter( body ):
 	if body.get_name() == targetName:

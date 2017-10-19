@@ -38,6 +38,7 @@ script/script = ExtResource( 1 )
 scale = 1
 moveSpeed = 300
 animationSpeed = 1.5
+blueNum = 100
 
 [node name="Camera" type="Camera" parent="."]
 
