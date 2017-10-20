@@ -11,8 +11,6 @@ script/script = ExtResource( 1 )
 
 [node name="sceneBox" parent="." instance=ExtResource( 2 )]
 
-jumpBox0 = Vector3( 0, 0, 0 )
-
 [node name="bugBody" parent="." instance=ExtResource( 3 )]
 
 [node name="Timer" type="Timer" parent="."]

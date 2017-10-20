@@ -19,9 +19,8 @@ func _ready():
 		hide()
 		collisionShape.set_rotation(Vector3(PI / 2, 0, 0))
 		set_fixed_process(true)
-	
+#	
 func _fixed_process(delta):
-	set_translation(characterBody.get_translation())
 	set_rotation(character.get_rotation())
 
 func shoot(delay=0.3):
