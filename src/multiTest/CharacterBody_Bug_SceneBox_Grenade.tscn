@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://sceneBase/sceneBox.scn" type="PackedScene" id=1]
+[ext_resource path="res://character/characterBody.tscn" type="PackedScene" id=2]
+[ext_resource path="res://bug/bugBody.tscn" type="PackedScene" id=3]
+[ext_resource path="res://props/grenade.scn" type="PackedScene" id=4]
+
+[node name="CharacterBody_Bug_SceneBox_Grenade" type="Node"]
+
+[node name="sceneBox" parent="." instance=ExtResource( 1 )]
+
+targetPath = NodePath("../characterBody")
+
+[node name="characterBody" parent="." instance=ExtResource( 2 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.21228 )
+
+[node name="bugBody" parent="." instance=ExtResource( 3 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.80656 )
+scale = 2
+
+[node name="grenade" parent="." instance=ExtResource( 4 )]
+
+transform/local = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -4.37357 )
+waitTime = 5
+
+[node name="Camera" type="Camera" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+projection = 0
+fov = 65.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = false
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+
+

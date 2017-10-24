@@ -31,6 +31,8 @@ func _on_Timer_timeout():
 		get_node("grenade").hide()
 		timer.set_wait_time(1.5)
 		timer.start()
-		print(bodyList)
+		for body in bodyList:
+			if body.get("blueNum") != null:
+				body.blueNum = 0
 	elif timeoutTag == 2:
 		queue_free()

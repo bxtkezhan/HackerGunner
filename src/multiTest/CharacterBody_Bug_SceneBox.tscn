@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://multiTest/Test_CharacterBody_Bug.gd" type="Script" id=1]
+[ext_resource path="res://multiTest/CharacterBody_Bug_SceneBox.gd" type="Script" id=1]
 [ext_resource path="res://sceneBase/sceneBox.scn" type="PackedScene" id=2]
 [ext_resource path="res://sceneBase/jumpBox.scn" type="PackedScene" id=3]
 [ext_resource path="res://character/characterBody.tscn" type="PackedScene" id=4]
 [ext_resource path="res://skills/shoot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://bug/bugBody.tscn" type="PackedScene" id=6]
 
-[node name="Test_CharacterBody_Bug" type="Node"]
+[node name="CharacterBody_Bug_SceneBox" type="Node"]
 
 script/script = ExtResource( 1 )
 
