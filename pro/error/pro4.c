@@ -1,5 +1,5 @@
 /* 题目：输入三个整数x,y,z，请把这三个数由小到大输出。
- * Build: gcc pro5.c
+ * Build: gcc pro4.c
  */
 #include <stdio.h>
  
@@ -11,10 +11,10 @@ int main() {
         t=x;x=y;y=t;
     }
     if(x>z) { /*交换x,z的值*/
-        t=z;z=x;x=t;
+        t=x;z=x;x=t;
     }
     if(y>z) { /*交换z,y的值*/
-        t=y;y=z;z=t;
+        t=z;y=z;z=t;
     }
     printf("从小到大排序: %d %d %d\n",x,y,z);
 }

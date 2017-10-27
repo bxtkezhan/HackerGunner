@@ -1,5 +1,5 @@
 /* 题目：输入某年某月某日，判断这一天是这一年的第几天？
- * Build: gcc pro4.c
+ * Build: gcc pro3.c
  */
 #include<stdio.h>
 
@@ -10,9 +10,9 @@ int main() {
     printf("请输入年、月、日，格式为：年,月,日（2015,12,10）\n");
     scanf("%d,%d,%d",&year,&month,&day);
     if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
-        monthday[1] =29;
+        monthday[2] =29;
     }
-    for (int i = 0; i < month-1; i++) {
+    for (int i = 0; i < month; i++) {
         sumday += monthday[i];
     }
     sumday += day;
