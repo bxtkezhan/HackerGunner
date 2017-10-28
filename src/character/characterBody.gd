@@ -7,20 +7,23 @@ export var blueNum = 100
 
 onready var character = get_node("character")
 onready var animationPlayer = character.get_node("AnimationPlayer")
+onready var timer = get_node("Timer")
 
 var destination = null
 var destinationHist = null
+var attacker = null
 
 func _ready():
 	for node in get_children():
-		node.set_scale(Vector3(1, 1, 1) * scale)
+		if node.get_name() != "Timer":
+			node.set_scale(Vector3(1, 1, 1) * scale)
 		if node.get_name() == "CollisionShape":
 			node.set_translation(node.get_translation() * scale)
 	destination = get_translation()
 	destinationHist = destinationHist
 	animationPlayer.set_speed(animationSpeed)
 	set_fixed_process(true)
-	
+
 func calcAngle(vect):
 	var vect_src = Vector3(0, 0, 1)
 	var vect_dst = vect - get_translation()
@@ -28,7 +31,19 @@ func calcAngle(vect):
 	var angle = vect_src.angle_to(vect_dst)
 	return (2 * (x > 0) - 1) * angle
 
+func beAttacked(node, speed=15):
+	attacker = node
+	var vect = get_translation() - attacker.get_translation()
+	vect = vect.normalized() * Vector3(1, 0, 1)
+	set_linear_velocity(vect * speed)
+	timer.start()
+
+func _on_Timer_timeout():
+	destination = get_translation()
+	attacker = null
+
 func _fixed_process(delta):
+	if attacker != null: return
 	var translation = get_translation()
 	if destination != destinationHist:
 		character.set_rotation(
@@ -37,7 +52,7 @@ func _fixed_process(delta):
 	if translation.distance_to(destination) > 0.5:
 		set_linear_velocity(
 			(destination - translation).normalized() *
-			 moveSpeed * delta)
+			 Vector3(1, 0, 1) * moveSpeed * delta)
 		if not animationPlayer.is_playing():
 			animationPlayer.play("Arun")
 	elif get_linear_velocity().length() > 0:

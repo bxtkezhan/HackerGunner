@@ -16,7 +16,8 @@ var targetBody = null
 func _ready():
 	for node in get_children():
 		node.set_scale(Vector3(1, 1, 1) * scale)
-		if node.get_name() == "CollisionShape":
+#		if node.get_name() == "CollisionShapeW":
+		if "CollisionShape" in node.get_name():
 			node.set_translation(node.get_translation() * scale)
 	destination = get_translation()
 	destinationHist = destinationHist
@@ -39,13 +40,13 @@ func _fixed_process(delta):
 	if translation.distance_to(destination) > 0.5:
 		set_linear_velocity(
 			(destination - translation).normalized() *
-			 moveSpeed * delta)
+			 Vector3(1, 0, 1) * moveSpeed * delta)
 		if not animationPlayer.is_playing():
 			animationPlayer.play("Arun")
 	elif get_linear_velocity().length() > 0:
 		set_linear_velocity(Vector3(0, 0, 0))
 		animationPlayer.play("default")
-	
+
 	if targetBody != null:
 		destination = targetBody.get_translation()
 		
@@ -61,3 +62,7 @@ func _on_scanTarget_body_exit( body ):
 	if body.get_name() == targetName:
 		targetBody = null
 		destination = get_translation()
+
+func _on_attackTarget_body_enter( body ):
+	if body.get_name() == targetName:
+		body.beAttacked(get_node("."))

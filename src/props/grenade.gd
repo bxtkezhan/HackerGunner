@@ -39,7 +39,6 @@ func _on_Timer_timeout():
 			if body.get("blueNum") != null:
 				body.blueNum = 0
 		for area in areaList:
-			print(str(area))
 			if (str(area) != "[Deleted Object]" and
 				area.get("useInduction") != null):
 				if area.useInduction == true:

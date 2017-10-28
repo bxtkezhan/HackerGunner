@@ -26,12 +26,11 @@ angular_damp = 1.0
 priority = 0.0
 monitoring = true
 monitorable = true
-collision/layers = 0
+collision/layers = 4
 collision/mask = 0
 script/script = ExtResource( 1 )
 bodyPath = null
 characterName = "character"
-layerMask = 2
 damageNum = 10
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

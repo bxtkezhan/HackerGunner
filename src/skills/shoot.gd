@@ -2,7 +2,6 @@ extends Area
 
 export(NodePath) var bodyPath
 export var characterName = "character"
-export var layerMask = 2
 export var damageNum = 10
 
 onready var collisionShape = get_node("CollisionShape")
@@ -15,7 +14,6 @@ func _ready():
 	if bodyPath != null:
 		characterBody = get_node(bodyPath)
 		character = characterBody.get_node(characterName)
-		set_layer_mask(layerMask)
 		hide()
 		collisionShape.set_rotation(Vector3(PI / 2, 0, 0))
 		set_fixed_process(true)

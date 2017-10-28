@@ -289,7 +289,7 @@ scale = 2
 
 [node name="bugBody4" parent="bugs" instance=ExtResource( 8 )]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 5 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 4 )
 scale = 2
 
 [node name="inductionBoxs" type="Spatial" parent="."]
@@ -327,6 +327,7 @@ transform/local = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -22.4871, 0, 7.48491
 
 [node name="characterBody" parent="." instance=ExtResource( 10 )]
 
+editor/display_folded = true
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -13 )
 
 [node name="shoot" parent="characterBody" instance=ExtResource( 11 )]
@@ -341,6 +342,23 @@ grenadeContainerPath = NodePath("../../grenadeContainer")
 [node name="grenadeContainer" type="Spatial" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+projection = 0
+fov = 65.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = true
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+target = NodePath("../characterBody/Camera")
+speed = 3.0
+enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
