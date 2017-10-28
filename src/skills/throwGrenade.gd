@@ -2,7 +2,7 @@ extends Spatial
 
 export(NodePath) var bodyPath
 export(NodePath) var grenadeContainerPath
-onready var grenadeGen = preload("res://props/grenade.scn")
+const grenadeGen = preload("res://props/grenade.scn")
 
 var characterBody = null
 var grenadeContainer = null

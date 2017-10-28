@@ -8,5 +8,6 @@ func _ready():
 
 func _input(event):
 	if event.type == InputEvent.MOUSE_BUTTON:
-		if event.button_index == BUTTON_LEFT and event.is_pressed():
+		if (event.button_index == BUTTON_LEFT and
+			event.is_pressed()):
 			shoot.shoot()

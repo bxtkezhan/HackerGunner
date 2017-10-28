@@ -1,9 +1,10 @@
 extends Spatial
 
 export(int) var waitTime = 3
+export var damageNum = 100
 
 onready var timer = get_node("Timer")
-onready var explodeGen = preload("res://specialEffects/explode.tscn")
+const explodeGen = preload("res://specialEffects/explode.tscn")
 
 var bodyList = []
 var areaList = []
@@ -37,7 +38,7 @@ func _on_Timer_timeout():
 		get_node("grenade").hide()
 		for body in bodyList:
 			if body.get("blueNum") != null:
-				body.blueNum = 0
+				body.blueNum -= damageNum
 		for area in areaList:
 			if (str(area) != "[Deleted Object]" and
 				area.get("useInduction") != null):

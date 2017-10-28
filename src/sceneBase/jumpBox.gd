@@ -8,7 +8,6 @@ func _ready():
 	# Initialization here
 	pass
 
-
 func _on_Area_body_enter( body ):
 	if body.get_name() == targetName and destination != null:
 		body.set_translation(destination)
