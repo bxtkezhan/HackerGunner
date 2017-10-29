@@ -7,15 +7,15 @@ var bulletNum = 40
 var grenadeNum = 8
 
 func _ready():
-	set_process_input(true)
+#	set_process_input(true)
+	pass
 
-func _input(event):
-	if event.type == InputEvent.MOUSE_BUTTON:
-		if event.button_index == BUTTON_LEFT and event.is_pressed():
-			if bulletNum > 0:
-				shoot.shoot()
-				bulletNum -= 1
-	if event.is_action_pressed("ui_space"):
-		if grenadeNum > 0:
-			throwGrenade.throw()
-			grenadeNum -= 1
+#func _input(event):
+#	if event.is_action_pressed("ui_j"):
+#		if bulletNum > 0:
+#				shoot.shoot()
+#				bulletNum -= 1
+#	elif event.is_action_pressed("ui_k"):
+#		if grenadeNum > 0:
+#			throwGrenade.throw()
+#			grenadeNum -= 1

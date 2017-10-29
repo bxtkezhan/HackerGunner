@@ -19,11 +19,12 @@ func _on_Area_body_exit( body ):
 		if body.get_name() == target.get_name():
 			active = false
 
-
 func _on_stickersBody_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if active:
 		if event.type == InputEvent.MOUSE_BUTTON:
-			if event.button_index == BUTTON_RIGHT and event.is_pressed():
+			if ((event.button_index == BUTTON_RIGHT or
+				 event.button_index == BUTTON_LEFT) and
+				event.is_pressed()):
 				target.destination = click_pos
 		elif event.type == InputEvent.SCREEN_TOUCH and event.is_pressed():
 			target.destination = click_pos

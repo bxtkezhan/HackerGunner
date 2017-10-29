@@ -1,0 +1,363 @@
+[gd_scene load_steps=18 format=1]
+
+[ext_resource path="res://gameUI/gameUI.gd" type="Script" id=1]
+[ext_resource path="res://gameUI/images/menu.png" type="Texture" id=2]
+[ext_resource path="res://gameUI/images/coin.png" type="Texture" id=3]
+[ext_resource path="res://gameUI/images/bullet.png" type="Texture" id=4]
+[ext_resource path="res://gameUI/images/grenade.png" type="Texture" id=5]
+[ext_resource path="res://gameUI/images/firing_gun.png" type="Texture" id=6]
+[ext_resource path="res://gameUI/images/firing_gun2.png" type="Texture" id=7]
+[ext_resource path="res://gameUI/images/military_grenade.png" type="Texture" id=8]
+[ext_resource path="res://gameUI/images/military_grenade2.png" type="Texture" id=9]
+[ext_resource path="res://gameUI/images/game_info.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="CanvasItemShaderGraph" id=6]
+
+_code = {
+"fragment": "vec3 nd2sl0=vec3(0,0,0);
+float nd2sl1=0.784314;
+COLOR.rgb=nd2sl0;
+COLOR.a=nd2sl1;
+",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+_data = {
+"shaders": [ [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [ 0, 2, 0, 1, 2, 1 ], 1, 0, Vector2( 50, 40 ), null, null, [  ], 2, 3, Vector2( 230, 52 ), Color( 0, 0, 0, 0.784314 ), null, [  ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ] ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=7]
+
+shader/shader = SubResource( 6 )
+shader/shading_mode = 0
+
+[node name="gameUI" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+shootNode = null
+throwGrenadeNode = null
+bulletNum = 50
+grenadeNum = 10
+
+[node name="menuBar" type="Control" parent="."]
+
+editor/display_folded = true
+anchor/right = 3
+anchor/bottom = 2
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.2
+
+[node name="menuButton" type="Button" parent="menuBar"]
+
+anchor/left = 2
+anchor/top = 2
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.03
+margin/top = 0.15
+margin/right = 0.0
+margin/bottom = 0.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+icon = ExtResource( 2 )
+flat = true
+
+[node name="coin" type="TextureFrame" parent="menuBar"]
+
+anchor/left = 2
+anchor/top = 2
+rect/scale = Vector2( 0.25, 0.25 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.25
+margin/top = 0.15
+margin/right = 0.0
+margin/bottom = 0.0
+texture = ExtResource( 3 )
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="menuBar/coin"]
+
+anchor/left = 2
+anchor/top = 2
+rect/scale = Vector2( 8, 8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1.2
+margin/top = 0.1
+margin/right = 40.0
+margin/bottom = 14.0
+text = "x0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="bullet" type="TextureFrame" parent="menuBar"]
+
+anchor/left = 2
+anchor/top = 2
+rect/scale = Vector2( 0.25, 0.25 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.5
+margin/top = 0.15
+margin/right = 0.0
+margin/bottom = 0.0
+texture = ExtResource( 4 )
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="menuBar/bullet"]
+
+anchor/left = 2
+anchor/top = 2
+rect/scale = Vector2( 8, 8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1.2
+margin/top = 0.1
+margin/right = 40.0
+margin/bottom = 14.0
+text = "x0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="grenade" type="TextureFrame" parent="menuBar"]
+
+anchor/left = 2
+anchor/top = 2
+rect/scale = Vector2( 0.25, 0.25 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = 0.15
+margin/right = 0.0
+margin/bottom = 0.0
+texture = ExtResource( 5 )
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="menuBar/grenade"]
+
+anchor/left = 2
+anchor/top = 2
+rect/scale = Vector2( 8, 8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1.2
+margin/top = 0.1
+margin/right = 40.0
+margin/bottom = 14.0
+text = "x0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ctrlBar" type="Control" parent="."]
+
+anchor/left = 2
+anchor/top = 2
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = 0.6
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="buttonA" type="TextureButton" parent="ctrlBar"]
+
+anchor/top = 2
+rect/scale = Vector2( 0.25, 0.25 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.4
+margin/right = 256.0
+margin/bottom = 352.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 6 )
+textures/pressed = ExtResource( 7 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="buttonB" type="TextureButton" parent="ctrlBar"]
+
+anchor/left = 2
+rect/scale = Vector2( 0.25, 0.25 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.5
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="dashPanel" type="Panel" parent="."]
+
+process/pause_mode = 2
+editor/display_folded = true
+visibility/visible = false
+material/material = SubResource( 7 )
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="gameInfo" type="TextureFrame" parent="dashPanel"]
+
+anchor/left = 2
+anchor/top = 2
+anchor/right = 2
+anchor/bottom = 2
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.127
+margin/top = 0.183333
+margin/right = 0.615234
+margin/bottom = 0.85
+texture = ExtResource( 10 )
+stretch_mode = 7
+
+[node name="home" type="Button" parent="dashPanel"]
+
+anchor/left = 2
+anchor/top = 2
+anchor/right = 2
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.6
+margin/top = 0.35
+margin/right = 0.75
+margin/bottom = 0.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back home"
+flat = true
+
+[node name="continue" type="Button" parent="dashPanel"]
+
+anchor/left = 2
+anchor/top = 2
+anchor/right = 2
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.6
+margin/top = 0.45
+margin/right = 0.75
+margin/bottom = 0.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "continue"
+flat = true
+
+[connection signal="pressed" from="ctrlBar/buttonA" to="." method="_on_buttonA_pressed"]
+
+[connection signal="pressed" from="ctrlBar/buttonB" to="." method="_on_buttonB_pressed"]
+
+
