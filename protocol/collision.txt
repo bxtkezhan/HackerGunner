@@ -1,0 +1,23 @@
+sceneBox, characterBody {
+	(1, 0)
+}
+
+sceneBox, bugBody {
+	(1, 0), [(0, 1)]
+}
+
+jumpBox, characterBody {
+	(1, 0)
+}
+
+character, bugBody {
+	(0, 2), [(0, x), {(2, 0), (2, 0)}]
+}
+
+shoot, bugBody {
+	(3, 0), [(0, 3)]
+}
+
+grenade, characterBody, bugBody, inductionBox {
+	(4, 0), (0, 4), [(0, 4)], (0, 4)
+}
