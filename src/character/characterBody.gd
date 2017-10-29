@@ -46,12 +46,14 @@ func _fixed_process(delta):
 			translation, destination), 0))
 		destinationHist = destination
 	# Translation
+	var linearVelocity = get_linear_velocity()
 	if translation.distance_to(destination) > 0.5:
 		set_linear_velocity(
+			linearVelocity * Vector3(0, 1, 0) +
 			(destination - translation).normalized() *
-			 Vector3(1, 0, 1) * moveSpeed * delta)
+			Vector3(1, 0, 1) * moveSpeed * delta)
 		if not animationPlayer.is_playing():
 			animationPlayer.play("Arun")
-	elif get_linear_velocity().length() > 0:
-		set_linear_velocity(Vector3(0, 0, 0))
+	elif linearVelocity.length() > 0:
+		set_linear_velocity(linearVelocity * Vector3(0, 1, 0))
 		animationPlayer.play("default")
