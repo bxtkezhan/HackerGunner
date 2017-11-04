@@ -20,8 +20,8 @@ func _ready():
 			node.set_scale(Vector3(1, 1, 1) * scale)
 		if "CollisionShape" in node.get_name():
 			node.set_translation(node.get_translation() * scale)
-	destination = get_translation()
-	destinationHist = destinationHist
+	destination = get_translation() * Vector3(1, 0, 1)
+	destinationHist = destination
 	animationPlayer.set_speed(animationSpeed)
 	set_fixed_process(true)
 

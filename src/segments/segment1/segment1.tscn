@@ -69,7 +69,6 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="sceneBox1" parent="seneBoxs" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.86, 2.55153, 0, -7.90978 )
 targetPath = NodePath("../../characterBody")
 
@@ -328,6 +327,7 @@ transform/local = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -22.4871, 0, 7.48491
 
 [node name="characterBody" parent="." instance=ExtResource( 10 )]
 
+editor/display_folded = true
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -13 )
 
 [node name="shoot" parent="characterBody" instance=ExtResource( 11 )]
@@ -370,5 +370,6 @@ environment = SubResource( 1 )
 
 shootNode = NodePath("../characterBody/shoot")
 throwGrenadeNode = NodePath("../characterBody/throwGrenade")
+coinMineNode = NodePath("../inductionBoxs")
 
 

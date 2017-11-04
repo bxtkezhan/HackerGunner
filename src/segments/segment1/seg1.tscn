@@ -1,0 +1,183 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://character/characterBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://skills/shoot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://skills/throwGrenade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sceneBase/sceneBox.scn" type="PackedScene" id=4]
+[ext_resource path="res://environments/ground001.scn" type="PackedScene" id=5]
+[ext_resource path="res://environments/arch1.scn" type="PackedScene" id=6]
+[ext_resource path="res://environments/arch2.scn" type="PackedScene" id=7]
+[ext_resource path="res://bug/bugBody.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameUI/gameUI.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Environment" id=1]
+
+ambient_light/enabled = false
+ambient_light/color = Color( 0, 0, 0, 1 )
+ambient_light/energy = 1.0
+fxaa/enabled = true
+background/mode = 2
+background/color = Color( 0, 0, 0, 1 )
+background/energy = 1.0
+background/scale = 1.0
+background/glow = 0.0
+background/canvas_max_layer = null
+glow/enabled = false
+glow/blur_passes = 1
+glow/blur_scale = 1
+glow/blur_strength = 1
+glow/blur_blend_mode = null
+glow/bloom = 0.0
+glow/bloom_treshold = 0.5
+dof_blur/enabled = false
+dof_blur/blur_passes = 1
+dof_blur/begin = 100.0
+dof_blur/range = 10.0
+hdr/enabled = false
+hdr/tonemapper = 0
+hdr/exposure = 0.4
+hdr/white = 1.0
+hdr/glow_treshold = 0.95
+hdr/glow_scale = 0.2
+hdr/min_luminance = 0.4
+hdr/max_luminance = 8.0
+hdr/exposure_adj_speed = 0.5
+fog/enabled = false
+fog/begin = 100.0
+fog/begin_color = Color( 0, 0, 0, 1 )
+fog/end_color = Color( 0, 0, 0, 1 )
+fog/attenuation = 1.0
+fog/bg = true
+bcs/enabled = false
+bcs/brightness = 1.0
+bcs/contrast = 1.0
+bcs/saturation = 1.0
+srgb/enabled = false
+
+[node name="seg1" type="Node"]
+
+[node name="characterBody" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+
+[node name="shoot" parent="characterBody" instance=ExtResource( 2 )]
+
+bodyPath = NodePath("..")
+
+[node name="throwGrenade" parent="characterBody" instance=ExtResource( 3 )]
+
+bodyPath = NodePath("..")
+grenadeContainerPath = NodePath("../../sceneBox/grenadeContainer")
+
+[node name="sceneBox" parent="." instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/local = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0 )
+targetPath = NodePath("../characterBody")
+
+[node name="ground001" parent="sceneBox" instance=ExtResource( 5 )]
+
+transform/local = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0 )
+
+[node name="grenadeContainer" type="Spatial" parent="sceneBox"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 0, 0, 1, 0, 0, 0, 0.333333, 0, 0, 0 )
+
+[node name="envs" type="Spatial" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="arch1" parent="envs" instance=ExtResource( 6 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.82543 )
+
+[node name="arch2" parent="envs" instance=ExtResource( 7 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3882, 0, 0.908497 )
+
+[node name="bugs" type="Spatial" parent="."]
+
+editor/display_folded = true
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="bugBody1" parent="bugs" instance=ExtResource( 8 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.891, 0, 0 )
+scale = 3
+blueNum = 300
+
+[node name="bugBody2" parent="bugs" instance=ExtResource( 8 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.891, 0, -15.3848 )
+scale = 2
+blueNum = 200
+
+[node name="bugBody3" parent="bugs" instance=ExtResource( 8 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.84034, 0, -15.3848 )
+scale = 4
+blueNum = 400
+
+[node name="bugBody4" parent="bugs" instance=ExtResource( 8 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.84034, 0, 6.6085 )
+scale = 2
+blueNum = 200
+
+[node name="bugBody5" parent="bugs" instance=ExtResource( 8 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8422, 0, 6.6085 )
+scale = 4
+blueNum = 400
+
+[node name="bugBody6" parent="bugs" instance=ExtResource( 8 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8422, 0, -3.20091 )
+scale = 4
+blueNum = 400
+
+[node name="bugBody7" parent="bugs" instance=ExtResource( 8 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.16009, 0, -12.0648 )
+scale = 5
+blueNum = 500
+
+[node name="bugBody8" parent="bugs" instance=ExtResource( 8 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8571, 0, -17.2368 )
+scale = 5
+blueNum = 500
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 0.819152, 0.573577, 0, -0.573577, 0.819152, 0, 5, 7 )
+projection = 0
+fov = 65.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = true
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+target = NodePath("../characterBody/Camera")
+speed = 3.0
+enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+environment = SubResource( 1 )
+
+[node name="gameUI" parent="." instance=ExtResource( 9 )]
+
+shootNode = NodePath("../characterBody/shoot")
+throwGrenadeNode = NodePath("../characterBody/throwGrenade")
+coinMineNode = NodePath("../bugs")
+bulletNum = 100
+grenadeNum = 20
+
+

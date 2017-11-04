@@ -84,6 +84,7 @@ margin/bottom = 0.0
 script/script = ExtResource( 1 )
 shootNode = null
 throwGrenadeNode = null
+coinMineNode = null
 bulletNum = 50
 grenadeNum = 10
 
@@ -229,6 +230,7 @@ max_lines_visible = -1
 
 [node name="ctrlBar" type="Control" parent="."]
 
+editor/display_folded = true
 anchor/left = 2
 anchor/top = 2
 anchor/right = 1
@@ -285,7 +287,6 @@ params/stretch_mode = 0
 [node name="dashPanel" type="Panel" parent="."]
 
 process/pause_mode = 2
-editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 7 )
 anchor/right = 1
@@ -356,8 +357,12 @@ shortcut = null
 text = "continue"
 flat = true
 
+[connection signal="pressed" from="menuBar/menuButton" to="." method="_on_menuButton_pressed"]
+
 [connection signal="pressed" from="ctrlBar/buttonA" to="." method="_on_buttonA_pressed"]
 
 [connection signal="pressed" from="ctrlBar/buttonB" to="." method="_on_buttonB_pressed"]
+
+[connection signal="pressed" from="dashPanel/continue" to="." method="_on_continue_pressed"]
 
 

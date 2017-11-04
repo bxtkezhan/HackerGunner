@@ -16,11 +16,15 @@ var targetBody = null
 
 func _ready():
 	for node in get_children():
-		node.set_scale(Vector3(1, 1, 1) * scale)
 		if "CollisionShape" in node.get_name():
 			node.set_translation(node.get_translation() * scale)
-	destination = get_translation()
-	destinationHist = destinationHist
+			node.set_scale(node.get_scale() * scale)
+		elif "scanTarget" in node.get_name():
+			node.set_scale(Vector3(1, 1, 1) * scale + Vector3(3, 3, 3))
+		else:
+			node.set_scale(node.get_scale() * scale)
+	destination = get_translation() * Vector3(1, 0, 1)
+	destinationHist = destination
 	animationPlayer.set_speed(animationSpeed)
 	set_fixed_process(true)
 

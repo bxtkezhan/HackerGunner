@@ -5,6 +5,8 @@ var target = null
 var active = false
 
 func _ready():
+	var sceneBoxMesh = get_node("sceneBox")
+	sceneBoxMesh.get_mesh().surface_get_material(0).set_fixed_flag(0, true)
 	if targetPath != null:
 		target = get_node(targetPath)
 

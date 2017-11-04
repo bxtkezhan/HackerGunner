@@ -9,7 +9,7 @@ extents = Vector3( 0.4, 0.5, 0.4 )
 
 [sub_resource type="SphereShape" id=2]
 
-radius = 3.0
+radius = 1.0
 
 [sub_resource type="SphereShape" id=3]
 
@@ -29,8 +29,8 @@ collision/mask = 13
 mode = 2
 mass = 1.0
 friction = 0.0
-bounce = 1.0
-gravity_scale = 0.0
+bounce = 0.0
+gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
 contacts_reported = 0
@@ -110,6 +110,7 @@ _update_shape_index = 0
 [node name="scanTarget" type="Area" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1

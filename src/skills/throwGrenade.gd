@@ -2,6 +2,7 @@ extends Spatial
 
 export(NodePath) var bodyPath
 export(NodePath) var grenadeContainerPath
+export var damageNum = 100
 const grenadeGen = preload("res://props/grenade.scn")
 
 var characterBody = null
@@ -15,6 +16,7 @@ func _ready():
 func throw(grenadeScale = 0.5):
 	if characterBody != null and grenadeContainer != null:
 		var grenade = grenadeGen.instance()
+		grenade.damageNum = damageNum
 		grenade.set_scale(Vector3(1, 1, 1) * grenadeScale)
 		grenade.set_translation(characterBody.get_translation())
 		grenadeContainer.add_child(grenade)
