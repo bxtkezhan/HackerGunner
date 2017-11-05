@@ -38,7 +38,7 @@ func _on_Timer_timeout():
 
 func _fixed_process(delta):
 	if attacker != null: return
-	var translation = get_translation()
+	var translation = get_translation() * Vector3(1, 0, 1)
 	# Rotate
 	if destination != destinationHist:
 		character.set_rotation(
