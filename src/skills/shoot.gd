@@ -1,37 +1,34 @@
-extends Area
+extends Spatial
+
+onready var shootingPart1 = get_node("shootingPart1")
+onready var timer = get_node("Timer")
+onready var doubleBulletGen = preload("res://props/doubleBullet.tscn")
 
 export(NodePath) var bodyPath
 export var characterName = "character"
 export var damageNum = 10
 
-onready var collisionShape = get_node("CollisionShape")
-onready var timer = get_node("Timer")
-
-var characterBody = null
 var character = null
 
 func _ready():
+	shootingPart1.hide()
 	if bodyPath != null:
-		characterBody = get_node(bodyPath)
+		var characterBody = get_node(bodyPath)
 		character = characterBody.get_node(characterName)
-		hide()
-		collisionShape.set_rotation(Vector3(PI / 2, 0, 0))
-		set_fixed_process(true)
-#	
-func _fixed_process(delta):
-	set_rotation(character.get_rotation())
+		timer.set_wait_time(shootingPart1.get_variable(0))
 
-func shoot(delay=0.3):
-	show()
-	collisionShape.set_rotation(Vector3(0, 0, 0))
-	timer.set_wait_time(delay)
-	timer.start()
-
-func _on_shoot_body_enter( body ):
-	body.blueNum -= damageNum
+func shoot():
+	if character != null:
+		timer.start()
+		var rotation = character.get_rotation()
+		var doubleBullet = doubleBulletGen.instance()
+		set_rotation(rotation)
+		shootingPart1.show()
+		doubleBullet.set_translation(Vector3(0, 1, 2))
+		doubleBullet.set_linear_velocity(
+			Vector3(0, 0, 5).rotated(Vector3(0, -1, 0), rotation.y))
+		doubleBullet.damageNum = damageNum
+		add_child(doubleBullet)
 
 func _on_Timer_timeout():
-	hide()
-	collisionShape.set_rotation(Vector3(PI / 2, 0, 0))
-	timer.stop()
-
+	shootingPart1.hide()

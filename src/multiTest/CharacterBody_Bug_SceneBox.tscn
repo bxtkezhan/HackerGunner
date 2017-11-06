@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://multiTest/CharacterBody_Bug_SceneBox.gd" type="Script" id=1]
 [ext_resource path="res://sceneBase/sceneBox.scn" type="PackedScene" id=2]
 [ext_resource path="res://sceneBase/jumpBox.scn" type="PackedScene" id=3]
 [ext_resource path="res://character/characterBody.tscn" type="PackedScene" id=4]
-[ext_resource path="res://skills/shoot.tscn" type="PackedScene" id=5]
-[ext_resource path="res://bug/bugBody.tscn" type="PackedScene" id=6]
+[ext_resource path="res://bug/bugBody.tscn" type="PackedScene" id=5]
 
 [node name="CharacterBody_Bug_SceneBox" type="Node"]
 
@@ -43,25 +42,19 @@ destination = Vector3( -4.5, 0, 0 )
 
 [node name="characterBody" parent="." instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 0 )
-
-[node name="shoot" parent="characterBody" instance=ExtResource( 5 )]
-
-bodyPath = NodePath("..")
-damageNum = 5
 
 [node name="bugBodys" type="Spatial" parent="."]
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
-[node name="bugBody1" parent="bugBodys" instance=ExtResource( 6 )]
+[node name="bugBody1" parent="bugBodys" instance=ExtResource( 5 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -4 )
 scale = 2
 
-[node name="bugBody2" parent="bugBodys" instance=ExtResource( 6 )]
+[node name="bugBody2" parent="bugBodys" instance=ExtResource( 5 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 4 )
 scale = 2

@@ -66,6 +66,5 @@ func _on_scanTarget_body_exit( body ):
 		destination = get_translation()
 
 func _on_attackTarget_body_enter( body ):
-	print(body)
 	if body.get_name() == targetName:
 		body.beAttacked(get_node("."))
