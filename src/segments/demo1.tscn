@@ -84,18 +84,15 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="bugs" type="Spatial" parent="."]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="bugBody1" parent="bugs" instance=ExtResource( 5 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22608, 0, -5.84983 )
-scale = 2
 
 [node name="bugBody2" parent="bugs" instance=ExtResource( 5 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.47973, 0, -3.65145 )
-scale = 2
 
 [node name="envs" type="Spatial" parent="."]
 

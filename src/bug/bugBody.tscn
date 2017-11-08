@@ -22,7 +22,7 @@ input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shapes/0/transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0 )
 shapes/0/trigger = false
 collision/layers = 0
 collision/mask = 13
@@ -52,6 +52,7 @@ blueNum = 100
 [node name="lights" type="Spatial" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 
 [node name="OmniLight" type="OmniLight" parent="lights"]
 
@@ -102,7 +103,7 @@ params/spot_attenuation = 1.0
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+transform/local = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -110,7 +111,7 @@ _update_shape_index = 0
 [node name="scanTarget" type="Area" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+transform/local = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
@@ -140,6 +141,7 @@ _update_shape_index = 0
 [node name="attackTarget" type="Area" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
@@ -168,6 +170,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="bug" parent="." instance=ExtResource( 2 )]
+
+transform/local = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 
 [connection signal="body_enter" from="scanTarget" to="." method="_on_scanTarget_body_enter"]
 

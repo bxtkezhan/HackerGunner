@@ -20,7 +20,7 @@ func _ready():
 			node.set_translation(node.get_translation() * scale)
 			node.set_scale(node.get_scale() * scale)
 		elif "scanTarget" in node.get_name():
-			node.set_scale(Vector3(1, 1, 1) * scale + Vector3(3, 3, 3))
+			node.set_scale(Vector3(2, 2, 2) * scale + Vector3(3, 3, 3))
 		else:
 			node.set_scale(node.get_scale() * scale)
 	destination = get_translation() * Vector3(1, 0, 1)
